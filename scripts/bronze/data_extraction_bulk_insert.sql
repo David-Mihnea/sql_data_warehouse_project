@@ -1,3 +1,10 @@
+/*  
+    Stored Procedure for Bulk Insert into Bronze Layer Tables
+    PURPOSE: Load data from CSV files into Bronze layer tables using BULK INSERT
+    DESCRIPTION: This stored procedure truncates existing data in the Bronze layer tables 
+    and loads fresh data from specified CSV files. It also includes error handling to 
+    capture any issues during the BULK INSERT operation.
+*/
 USE DataWarehouse;
 GO
 
@@ -29,7 +36,7 @@ BEGIN
         ---- LOAD DATA INTO bronze.crm_prd_info TABLE FROM CSV FILE
 
         SET @start_time = GETDATE();
-        
+
         TRUNCATE TABLE bronze.crm_prd_info;
 
         BULK INSERT bronze.crm_prd_info
