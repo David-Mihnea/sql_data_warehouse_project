@@ -1,3 +1,12 @@
+/*
+    DDL for Bronze Layer
+    PURPOSE: Create tables in Bronze layer of Data Warehouse
+    DESCRIPTION: This script creates the necessary tables in the Bronze layer of the Data Warehouse 
+    to store raw data from various sources.
+    IT DROPS the tables if they already exist to ensure a clean setup.
+
+*/
+
 USE DataWarehouse;
 go
 if OBJECT_ID('bronze.crm_cust_info','U') is not null
