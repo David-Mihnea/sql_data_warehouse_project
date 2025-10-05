@@ -1,3 +1,14 @@
+/* This script does the ETL process from Bronze to Silver layer.
+   It extracts data from the Bronze layer, transforms it as necessary,
+   and loads it into the Silver layer tables.
+   actions taken:
+   1. Data Cleansing: Handles missing values, corrects data types, and standardizes formats.
+   2. Data Transformation: Applies business rules to transform data into a more usable format.          
+   3. Data Loading: Inserts the transformed data into the Silver layer tables.
+   It also includes error handling and logging to monitor the ETL process.
+   
+*/
+
 use datawarehouse;
 GO
 -- Insert data into silver layer tables from bronze layer with necessary transformations and cleansing
