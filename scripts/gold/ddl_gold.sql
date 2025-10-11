@@ -9,7 +9,13 @@
 */
 
 use datawarehouse;
+
 go 
+
+if object_id('gold.dim_customers','V') is not null
+    drop view gold.dim_customers;
+
+go
 
 create or alter view gold.dim_customers as
 select 
@@ -33,7 +39,8 @@ LEFT JOIN silver.erp_LOC_A101 as la
 
 go
 
-select * from gold.dim_customers;
+if object_id('gold.dim_products','V') is not null
+    drop view gold.dim_products;
 
 go
 
@@ -56,7 +63,10 @@ select
  where pn.prd_end_dt is null; --- current products only
 
 go
-select * from gold.dim_products;
+
+if object_id('gold.fact_sales','V') is not null
+    drop view gold.fact_sales;
+
 go
 
 create or alter view gold.fact_sales as
@@ -76,5 +86,4 @@ left join gold.dim_products pr
 left join gold.dim_customers cu
     on sd.sls_cust_id = cu.customer_id; 
 
-go
-select * from gold.fact_sales;
+
